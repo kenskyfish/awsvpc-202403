@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+  - ubuntu22
+  - openvpn
+  vars_files:
+  - vars/ubuntu22.yml
+  - vars/openvpn.yml
+  become: yes

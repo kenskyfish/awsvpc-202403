@@ -1,0 +1,38 @@
+---
+- name: replace /etc/ufw/before.rules
+  copy:
+    src: ./files/ufw/before.rules
+    dest: /etc/ufw/before.rules
+    owner: root
+    mode: 0600
+
+- name: set DEFAULT_FORWARD_POLICY in /etc/default/ufw
+  lineinfile:
+    path: /etc/default/ufw
+    regexp: '^DEFAULT_FORWARD_POLICY'
+    line: 'DEFAULT_FORWARD_POLICY="ACCEPT"'
+
+- name: enable IP forwarding in /etc/sysctl.conf
+  lineinfile:
+    path: /etc/sysctl.conf
+    regexp: 'net.ipv4.ip_forward'
+    line: 'net.ipv4.ip_forward=1'
+
+- name: enable IP forwarding now - without reboot
+  shell: echo 1 > /proc/sys/net/ipv4/ip_forward
+
+- name: Configure ufw rules to allow ssh and https
+  ufw:
+    rule: '{{ item.rule }}'
+    port: '{{ item.port }}'
+    proto: '{{ item.proto }}'
+  with_items:
+    - { rule: 'limit', port: '22', proto: 'tcp' }
+    - { rule: 'allow', port: '443', proto: 'tcp' }
+    # - { rule: 'allow', port: '3000', proto: 'tcp' }  not required because of nginx front end
+
+- name: reload and/or enable firewall (UFW)
+  ufw:
+    state: enabled
+
+# NOTE: in Azure must also enable ip forwarding for network interface

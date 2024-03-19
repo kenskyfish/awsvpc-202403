@@ -1,0 +1,33 @@
+---
+- name: Install openvpn and tools
+  package:
+    name : 
+      - openvpn
+      - expect    # this playbook needs it for easy-rsa
+      - secure-delete
+    state : present
+
+- name: get easyRSA
+  unarchive:
+     src: https://github.com/OpenVPN/easy-rsa/releases/download/v3.1.7/EasyRSA-3.1.7.tgz
+     dest: /etc/openvpn/
+     remote_src: yes
+     group: root
+     owner: root
+
+- name: link EasyRSA-3.1.7 to easy-rsa
+  file:
+    src: /etc/openvpn/EasyRSA-3.1.7
+    dest: /etc/openvpn/easy-rsa
+    state: link
+
+- name: set easy-rsa default key timeout to nine years
+  lineinfile:
+    path: /etc/openvpn/easy-rsa/easyrsa
+    regexp: 'set_var EASYRSA_CERT_EXPIRE'
+    line: '        set_var EASYRSA_CERT_EXPIRE     3285 # default of 9 years'
+
+- name: make easyrsa executable
+  file:
+    path: "/etc/openvpn/easy-rsa/easyrsa"
+    mode: '0700'

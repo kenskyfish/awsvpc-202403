@@ -1,0 +1,8 @@
+# Ansible Vault is used to avoid exposing easyrsa_ca_passphrase in code base.
+
+# the vault contains only the following variable:
+easyrsa_ca_passphrase: sometrickypasshrasehere
+
+# to create or edit vault file (uses vim!):
+# ansible-vault create vault.yml --vault-password-file=~/crypt/keys/someotherkey.pem
+# ansible-vault edit vault.yml --vault-password-file=~/crypt/keys/someotherkey.pem
