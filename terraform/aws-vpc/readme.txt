@@ -2,7 +2,7 @@ This sets up a new VPC in AWS with a DMZ, internet gateway, and private subnet(s
 
 Prerequisites:
 * AWS CLI installed and credentials configured (aws configure)
-* Terraform installed (v1.0.6+)
+* Terraform installed (v1.7+)
 
 Process:
 * Adjust terraform.tvars appropriately

@@ -11,7 +11,7 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
-  profile = "frankfurt"
+  profile = var.aws_profile
 }
 
 /*
