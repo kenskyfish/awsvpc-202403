@@ -1,0 +1,8 @@
+---
+- hosts: all
+  roles:
+  - ubuntu22
+  - postgresql
+  vars_files:
+  - vars/ubuntu22.yml
+  become: yes

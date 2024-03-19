@@ -1,0 +1,9 @@
+---
+- name: Install PostgreSQL
+  package:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - postgresql
+    - postgresql-contrib

@@ -1,0 +1,15 @@
+---
+- name: Install myriad useful tools
+  package:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - p7zip-full
+    - wget
+    - zip
+    - unzip
+    - pv
+    - htop
+    - sysstat
+    - coreutils
