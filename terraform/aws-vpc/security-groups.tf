@@ -53,6 +53,29 @@ resource "aws_security_group" "https_in" {
   egress = []
 }
 
+resource "aws_security_group" "ssh_in" {
+  name        = "${var.vpc-name}-ssh-in"
+  description = "Allow in SSH for VPN"
+  vpc_id      = aws_vpc.new_vpc.id
+
+  ingress = [
+    {
+      description = "ssh from anywhere"
+      from_port   = 22
+      to_port     = 22
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+      // ipv6_cidr_blocks = ["::/0"]
+      ipv6_cidr_blocks = null
+      prefix_list_ids = null
+      security_groups = null
+      self = null
+    }
+  ]
+
+  egress = []
+}
+
 resource "aws_security_group" "local_only" {
   name        = "${var.vpc-name}-local-only"
   description = "Allow local VPC traffic only"

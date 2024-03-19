@@ -29,9 +29,11 @@ cidr-d            = "172.30.48.0/20"  */
 // eu-central-1    ami-06c6120a9105ccff3    amzn-ami-vpc-nat-2018.03.0.20230807.0-x86_64-ebs
 aws_profile       = "frankfurt"
 aws_region        = "eu-central-1"
+aws_keypair_name  = "aws-frankfurt-admin-a"
 aws_used_azs      = ["a", "b", "c"]
 aws_dmz_az        = "b"
 nat_ami           = "ami-06c6120a9105ccff3"
+vpn_ami           = "ami-023adaba598e661ac"
 nat_instance_type = "t3a.micro"
 VPC_Name          = "Fritz VPC"
 vpc-name          = "fritzvpc"

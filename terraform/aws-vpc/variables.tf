@@ -10,6 +10,12 @@ variable "aws_region" {
   default     = "ap-fareast-0"
 }
 
+variable "aws_keypair_name" {
+  description = "AWS Key Pair name"
+  type        = string
+  default     = "aws-keypair-name"
+}
+
 variable "aws_dmz_az" {
   description = "DMZ Availability Zone"
   type        = string
@@ -24,6 +30,12 @@ variable "aws_used_azs" {
 
 variable "nat_ami" {
     description = "ami id for NAT instance (region specific)"
+    type = string
+    default = "ami-0a3d7c296abcde123"
+}
+
+variable "vpn_ami" {
+    description = "ami id for VPN instance (region specific)"
     type = string
     default = "ami-0a3d7c296abcde123"
 }
