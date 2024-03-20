@@ -1,19 +1,13 @@
 ---
-- name: Set hostname
+- name: Set hostname to {{ hostname }}
   command: "hostnamectl --static set-hostname {{ hostname }}"
 
-- name: Set timezone
+- name: Set timezone to {{ time_zone }}
   timezone:
     name: "{{ time_zone }}"
 
-- name: Set locale
+- name: Set locale to {{ locale }}
   command: "localectl set-locale {{ locale }}"
-
-- name: update all
-  apt: 
-    name: "*"
-    state: latest
-    update_cache: yes
 
 - name: Update CAs
   package:
