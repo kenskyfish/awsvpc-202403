@@ -1,0 +1,20 @@
+---
+- name: configure postgresql to listen on all interfaces
+  lineinfile:
+    path: /etc/postgresql/14/main/postgresql.conf
+    regexp: 'listen_addresses'
+    state: present
+    line: "listen_addresses = '*'                  # what IP address(es) to listen on;"
+
+- name: configure postgresql to accept connections from anywhere
+  lineinfile:
+    path: /etc/postgresql/14/main/pg_hba.conf
+    regexp: '^host    all             all             0.0.0.0/0               scram-sha-256'
+    state: present
+    line: "host    all             all             0.0.0.0/0               scram-sha-256"
+
+- name: Restart postgresql service
+  systemd_service:
+    state: restarted
+    daemon_reload: true
+    name: postgresql
