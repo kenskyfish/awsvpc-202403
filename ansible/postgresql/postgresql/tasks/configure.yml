@@ -18,3 +18,11 @@
     state: restarted
     daemon_reload: true
     name: postgresql
+
+- name: Create superuser account
+  postgresql_user:
+    name: "{{ postgresql_username }}"
+    password: "{{ postgresql_password }}"
+    role_attr_flags: SUPERUSER
+  become_user: postgres
+  become: true

@@ -1,4 +1,10 @@
 ---
+- name: update all
+  apt: 
+    name: "*"
+    state: latest
+    update_cache: yes
+
 - name: Install myriad useful tools
   package:
     name: "{{ packages }}"

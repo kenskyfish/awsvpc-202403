@@ -5,4 +5,5 @@
   - postgresql
   vars_files:
   - vars/ubuntu22.yml
+  - vars/postgresql.yml
   become: yes
