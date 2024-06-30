@@ -40,10 +40,28 @@ variable "vpn_ami" {
     default = "ami-0a3d7c296abcde123"
 }
 
+variable "test_ami" {
+    description = "ami id for test instance (region specific)"
+    type = string
+    default = "ami-0a3d7c296abcde123"
+}
+
 variable "nat_instance_type" {
     description = "instance type for NAT instance"
     type = string
-    default = "t3a.ultra"
+    default = "t3.micro"
+}
+
+variable "vpn_instance_type" {
+    description = "instance type for VPN instance"
+    type = string
+    default = "t3.micro"
+}
+
+variable "test_instance_type" {
+    description = "instance type for test instance"
+    type = string
+    default = "t3.micro"
 }
 
 variable "VPC_Name" {

@@ -86,7 +86,7 @@
 
 - name: place makecreds script (for user key generation)
   copy:
-    src: ./templates/makecreds.sh
+    src: ./files/makecreds.sh
     dest: /etc/openvpn/makecreds.sh
 
 - name: replace VPNNAME in makecreds script

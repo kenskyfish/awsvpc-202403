@@ -25,18 +25,22 @@ cidr-b            = "172.30.16.0/20"
 cidr-c            = "172.30.32.0/20"
 cidr-d            = "172.30.48.0/20"  */
 
-// Frankfurt example
-// eu-central-1    ami-06c6120a9105ccff3    amzn-ami-vpc-nat-2018.03.0.20230807.0-x86_64-ebs
-aws_profile       = "frankfurt"
-aws_region        = "eu-central-1"
-aws_keypair_name  = "aws-frankfurt-admin-a"
+// Stockholm example
+// eu-north-1    ami-072517490bf2cf3a3    amzn-ami-vpc-nat-2018.03.0.20230807.0-x86_64-ebs
+// eu-north-1    ami-0705384c0b33c194c    Ubuntu, 24.04 LTS, amd64 noble image build on 2024-04-23
+aws_profile       = "stockholm"
+aws_region        = "eu-north-1"
+aws_keypair_name  = "stockholm-admin"
 aws_used_azs      = ["a", "b", "c"]
 aws_dmz_az        = "b"
-nat_ami           = "ami-06c6120a9105ccff3"
-vpn_ami           = "ami-023adaba598e661ac"
-nat_instance_type = "t3a.micro"
-VPC_Name          = "Fritz VPC"
-vpc-name          = "fritzvpc"
+nat_ami           = "ami-072517490bf2cf3a3"
+vpn_ami           = "ami-0705384c0b33c194c"
+test_ami          = "ami-0705384c0b33c194c"
+nat_instance_type = "t3.micro"
+vpn_instance_type = "t3.micro"
+test_instance_type = "t3.micro"
+VPC_Name          = "Ragnar VPC"
+vpc-name          = "ragnarvpc"
 cidr-vpc          = "10.63.0.0/16"
 cidr-dmz          = "10.63.0.0/20"
 cidr-a            = "10.63.16.0/20"

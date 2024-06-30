@@ -1,7 +1,8 @@
 ---
 # These values will be different for each openvpn server
-vpn_name: fritzvpn
-easyrsa_common_name: fritzvpn
+vpn_name: ragnarvpn
+# comman name should be FQDN, e.g. myvpn.mydom.com
+easyrsa_common_name: ragnarvpn.bogus.net
 
 # easyrsa_ca_passphrase: sometrickypassphrasehere <-- moved to vault
 
