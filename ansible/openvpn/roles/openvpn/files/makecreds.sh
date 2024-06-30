@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ $# -ne 2 ]; then
+    echo "Usage: makecreds.sh someusername someuserpassphrase"
+    exit 1
+fi
 vpn_name=VPN_NAME
 cd /etc/openvpn/easy-rsa
 clear
